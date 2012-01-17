@@ -1,0 +1,18 @@
+<taconite>
+  <replaceContent select="#logIn">
+    <?php 
+		echo '<div class="logIn"><p>' . "Hi " . '<strong>' . $session->read('Auth.User.name') . '</strong>' . "!" . '<br />';
+		echo "Not you? "  . '<a href="#">' . "Sign In" . '</a><br />';
+		echo '<a href="#">' . "Edit Profile" . '</a>' . " | " . '<a href="#">' . "Log Out" . '</a></p></div>';
+		echo $form->create('User', array('action' => 'logout')); 
+		echo $form->end('Logout');
+	?>
+		
+  </replaceContent>
+  <eval><![CDATA[
+    var reloadpage = <?php echo (($reloadpage) ? 'true' : 'false'); ?>;
+    if (reloadpage || $(".main #UserLoginForm").length) {
+      $.get($.address.value().substr(1));
+    }
+  ]]></eval>
+</taconite>

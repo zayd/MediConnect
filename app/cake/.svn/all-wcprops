@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/zayd-MediConnect/!svn/ver/16/cake/cake
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/LICENSE.txt
+END
+VERSION.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/VERSION.txt
+END
+bootstrap.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/zayd-MediConnect/!svn/ver/16/cake/cake/bootstrap.php
+END
+basics.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/basics.php
+END
+dispatcher.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/dispatcher.php
+END

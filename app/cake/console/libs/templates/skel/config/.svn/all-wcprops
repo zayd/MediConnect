@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config
+END
+acl.ini.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/acl.ini.php
+END
+bootstrap.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/bootstrap.php
+END
+inflections.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/inflections.php
+END
+routes.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/routes.php
+END
+database.php.default
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/database.php.default
+END
+core.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/zayd-MediConnect/!svn/ver/4/cake/cake/console/libs/templates/skel/config/core.php
+END

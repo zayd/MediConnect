@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/zayd-MediConnect/!svn/ver/58/cake/app/config
+END
+acl.ini.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/zayd-MediConnect/!svn/ver/4/cake/app/config/acl.ini.php
+END
+bootstrap.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/zayd-MediConnect/!svn/ver/4/cake/app/config/bootstrap.php
+END
+inflections.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/zayd-MediConnect/!svn/ver/4/cake/app/config/inflections.php
+END
+routes.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/zayd-MediConnect/!svn/ver/58/cake/app/config/routes.php
+END
+database.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/zayd-MediConnect/!svn/ver/4/cake/app/config/database.php
+END
+database.php.default
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/zayd-MediConnect/!svn/ver/4/cake/app/config/database.php.default
+END
+core.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/zayd-MediConnect/!svn/ver/42/cake/app/config/core.php
+END

@@ -1,0 +1,116 @@
+<?php
+class HomesController extends AppController {
+  var $uses = array('Doctor', 'Procedure');
+  //var $components = array('Auth');
+  
+  function container() {
+    $this->helpers[] = 'Javascript';
+  }
+  
+  function index() {
+    $this->layout = 'xml';
+    $this->helpers[] = 'Javascript';
+	
+	// make a list of all specialties for the drop-down box
+    $this->set('specialties', $this->Doctor->Specialty->find('all', array(
+      'fields' => array('Specialty.id', 'Specialty.name'),
+      'order' => array('Specialty.name'),
+      'recursive' => -1
+    )));
+	
+	/*
+	$this->set('procedures', $this->Doctor->Procedures->find('all', array(
+      'fields' => array('Specialty.id', 'Specialty.name'),
+      'order' => array('Specialty.name'),
+      'recursive' => -1
+    ))); */
+  }
+  
+  function autocomplete() {
+    $this->layout = 'ajax';
+    $q = strtolower($this->params['url']['q']);
+    if ($q) {
+      // location ID
+      $location = $this->params['url']['location'];
+      
+      // I have no idea why I have to put both Doctor.name LIKE conditions in separate arrays of their own
+      // but it doesn't work any other way
+      $doctorConds = array('OR' => array(array('Doctor.name LIKE' => "$q%"), array('Doctor.name LIKE' => "% $q%")));
+      $specialtyConds = array('OR' => array(array('Specialty.name LIKE' => "$q%"), array('Specialty.tags LIKE' => "% $q%"), array('Specialty.tags LIKE' => "$q%"), array('Specialty.tags LIKE' => "% $q%")));
+      $procedureConds = array('OR' => array(array('Procedure.name LIKE' => "$q%"), array('Procedure.tags LIKE' => "% $q%"), array('Procedure.tags LIKE' => "$q%"), array('Procedure.tags LIKE' => "% $q%")));
+      
+      if ($location) {
+        // quick trick to get querying by hospitals working. Doesn't affect anything else
+        $this->Doctor->unbindModel(array('hasMany' => array('DoctorDetail')), false);
+        $this->Doctor->bindModel(array('hasOne' => array('DoctorDetail' => array('className' => 'DoctorDetail'))), false);
+        $this->Procedure->unbindModel(array('hasMany' => array('ProcedureDetail')));
+        $this->Procedure->bindModel(array('hasOne' => array('ProcedureDetail' => array('className' => 'ProcedureDetail'))));
+        
+        if (strpos($location, ',') > -1) {
+          // search for all locations NOT in the comma-separated list
+          $doctorConds['NOT'] = $specialtyConds['NOT'] = array('DoctorDetail.location_id' => explode(',', $location));
+          $procedureConds['NOT'] = array('ProcedureDetail.location_id' => explode(',', $location));
+        } else {
+          // search only for specified location
+          $doctorConds['DoctorDetail.location_id'] = $specialtyConds['DoctorDetail.location_id'] = $location;
+          $procedureConds['ProcedureDetail.location_id'] = $location;
+        }
+      }
+      
+      $this->set('doctors', $this->Doctor->find('all',
+        array(
+          'conditions' => $doctorConds,
+          'fields' => array('DISTINCT Doctor.name', 'Specialty.name'),
+        )
+      ));
+      $this->set('specialties', $this->Doctor->Specialty->find('all',
+        array(
+          'conditions' => $specialtyConds,
+          'fields' => array('DISTINCT Specialty.id', 'Specialty.name', 'Specialty.tags'),
+        )
+      ));
+      $this->set('procedures', $this->Procedure->find('all',
+        array(
+          'conditions' => $procedureConds,
+          'fields' => array('DISTINCT Procedure.name', 'Procedure.department', 'Procedure.tags'),
+        )
+      ));
+    }
+  }
+  
+  // debugging aid, just perform a query and print the results out
+  function doQuery() {
+    Configure::write('debug', 1);
+    $this->layout = 'ajax';
+    $this->set('results', $this->Doctor->DoctorDetail->Location->find('all',
+      array(
+        'fields' => array('Location.id', 'Location.name'),
+        'recursive' => -1
+      )
+    ));
+  }
+  
+  // I'm being very lazy here and printing out the HTML for the hospitals dropdown
+  // The proper way, i.e. embedding this code inside the actual page, would be complicated since
+  // our index.taconite.xml doesn't go through PHP, so it's easier to do it this way for the time being
+  function listLocations() {
+    Configure::write('debug', 1);
+    $this->layout = 'ajax';
+    $this->set('locations', $this->Doctor->DoctorDetail->Location->find('all',
+      array(
+        'fields' => array('Location.id', 'Location.name'),
+        'recursive' => -1
+      )
+    ));
+  }
+  
+  function about() {
+  }
+  
+  function contact() {
+  }
+  
+  function press() {
+  }
+}
+?>

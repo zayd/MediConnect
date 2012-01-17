@@ -1,0 +1,1 @@
+<?php $javascript->link(array('jquery', 'jquery-autocomplete', 'taconite', 'jquery.address', 'jquery.form', 'jquery.blockUI', 'jquery.tablesorter', 'http://www.google.com/jsapi?key=ABQIAAAAFP2sTCpOLjdQ82EnYh1rpRRFsWMkvUXJurjBtVD3nE4dBAixyBQmrnAWmZEziBMkvTnhrPG99l5_uA', 'http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php', 'container'), false); ?>

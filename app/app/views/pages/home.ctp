@@ -1,0 +1,1 @@
+<?php $javascript->link(array('jquery', 'jquery-autocomplete', 'taconite', 'jquery.address', 'jquery.form', 'impromptu', 'index'), false); ?>

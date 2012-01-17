@@ -1,0 +1,91 @@
+<?php echo $html->docType(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <?php echo $html->charset(); ?>
+    <title><?php echo $title_for_layout?></title>
+  <?php
+    echo $html->meta('keywords', 'online medical appointments, discount medical, pakistan hospitals, review hospital, review doctors');
+    echo $html->meta('description', 'MediConnect lets you book medical appointments at leading hospitals in Pakistan. We offer discounts on hospital list prices and reviews and ratings on hospitals and doctors in Pakistan.');
+    echo $html->css('default');
+  ?>
+    <meta name="Author" content="info@mediconnect.pk"/>
+  </head>
+
+<body id="page-main">
+  <div id="container">
+    <h1 class="logo"><a href="/"><strong><em>MediConnect</em></strong></a></h1>
+    <ul id="nav-aux" class="clearfix">
+      <li class="about"><a href="./selftest.php#welcome">About Us</a></li>
+      <li class="contact"><a href="./selftest.php#contact">Contact Us</a></li>
+      <li class="press"><a href="./selftest.php#buzz">Press Page</a></li>
+    </ul>
+	<ul id="social">
+      <li class="twitter"><a href="http://www.twitter.com/mediconnectpk" style="border: none;">Follow us on Twitter!</a></li>
+      <li class="facebook"><a href="http://www.facebook.com/pages/MediConnect/55954822430" style="border: none;">Find us on Facebook!</a></li>
+      <li class="feed"><a href="feed:http://www.mediconnect.pk/blog/?feed=rss2" style="border: none;">Subscribe to our blog!</a></li>
+    </ul>
+	
+	<?php
+		if(!empty($user)):
+			if($user['User']['fbid'] > 0):
+                echo $html->link('logout', '#', array('onclick' => 'FB.Connect.logout(function() { document.location = \'http://www.mediconnect.pk/beta/users/logout/\'; }); return false;'));
+            else:
+                echo $html->link('logout', array('controller' => 'users', 'action' => 'logout'));
+            endif;
+        else:
+			echo '<fb:login-button onlogin="window.location.reload();"></fb:login-button>';
+        endif;				
+		?>
+		
+	<ul id="logIn">
+		<?php 
+			/*if ($session->read('Auth.User.name') != NULL)
+				echo '<div class="logIn">' . "Hi " . $session->read('Auth.User.name') . "!" . '</div>';
+			
+			else	{
+			//echo $html->para(null, 'Don\'t have an account? ' . $html->link('Create one', '#', array('onclick' => '$.address.value(\'/users/add?from=\' + escape($.address.value())); return false;')) . '.');
+			echo $form->create('User', array('class' => 'logIn', 'action' => 'login')); 
+			echo $form->input('username', array('class' => 'textBox', 'label' => '', 'value'=>'Username'));
+			echo $form->input('password', array('class' => 'textBox', 'label' => '', 'value'=>'Password')); 
+			echo $form->end('Login'); } */
+		?>
+	</ul>
+    
+    <div id="callToAction" class="clearfix">
+    <div class="right">
+      <div class="corner bgPng"></div>
+
+          <div class="main">
+            <?php echo $content_for_layout ?>		
+          </div>	
+          <div class="midThird">
+            <div class="inner">
+            </div>
+          </div>
+
+        </div>
+        <div class="left">
+          <div class="topleft">
+          <?php echo $this->element('helpboxOne'); ?>
+          </div>
+
+          <div id="features">
+          <?php echo $this->element('helpboxTwo'); ?>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+            <p>
+          <a href="./index.html">main page</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+          <a href="./selftest.php#welcome">about us</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+          <a href="./selftest.php#contact">contact us</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+          <a href="">privacy policy</a></p>
+        <p>
+          <a href="./blog">blog</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+          <a href="">partner page</a><br />
+          &copy;2009 MediConnect Solutions. All Rights Reserved.<br />Website design by <a href="mailto:info@mediconnect.pk">EN Designs</a></p>
+      </div>
+    </div>
+  <?php echo $scripts_for_layout; ?>
+  </body>
+</html>

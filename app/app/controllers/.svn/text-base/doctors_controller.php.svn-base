@@ -1,0 +1,47 @@
+<?php
+class DoctorsController extends AppController {
+  //var $scaffold;
+  var $layout = 'xml';
+  
+  function index() {
+    $this->set('doctors', $this->Doctor->find('all'));
+  }
+  
+  function byName($name) {
+    $this->Doctor->recursive = 2;
+    $this->set('doctors', $this->Doctor->findByName($name));
+  }
+  
+  function bySpecialty($specialty) {
+    $q = $this->params['url'];
+    
+    $days = array(
+      'monday' => $q['monday'],
+      'tuesday' => $q['tuesday'],
+      'wednesday' => $q['wednesday'],
+      'thursday' => $q['thursday'],
+      'friday' => $q['friday'],
+      'saturday' => $q['saturday'],
+      'sunday' => $q['sunday']
+    );
+    foreach($days as $day => $time) {
+      if (!$time || $time == '0000-0000') { unset($days[$day]); } // remove all null entries
+    }
+    
+    $results = $this->Doctor->Specialty->advancedSearch($q['specialty'], $q['location'], $days, $q['fee'], $q['wait'], $q['experience']);
+    $this->set('results', $results[0]);
+    $this->set('results2', $results[1]);
+    
+    $this->Doctor->Specialty->id = $q['specialty'];
+    $this->set('specialtyID', $q['specialty']);
+    $this->set('specialtyName', $this->Doctor->Specialty->field('name'));
+    
+    // make a list of all specialties for the drop-down box
+    $this->set('specialties', $this->Doctor->Specialty->find('all', array(
+      'fields' => array('Specialty.id', 'Specialty.name'),
+      'order' => array('Specialty.name'),
+      'recursive' => -1
+    )));
+  }
+}
+?>
