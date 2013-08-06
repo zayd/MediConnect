@@ -2,7 +2,7 @@
 
 dir
 58
-http://svn2.xp-dev.com/svn/zayd-MediConnect/cake/app/vendors/shells
+http://svn2.xp-dev.com/svn/zayd-MediConnect/cake/vendors
 http://svn2.xp-dev.com/svn/zayd-MediConnect
 
 
@@ -26,9 +26,12 @@ smeenai
 
 7a94da1d-f96a-0410-83a8-678371a65d97
 
-tasks
+css
 dir
 
-templates
+shells
+dir
+
+js
 dir
 

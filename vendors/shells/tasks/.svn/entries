@@ -2,7 +2,7 @@
 
 dir
 58
-http://svn2.xp-dev.com/svn/zayd-MediConnect/cake/app/vendors/shells/tasks
+http://svn2.xp-dev.com/svn/zayd-MediConnect/cake/vendors/shells/tasks
 http://svn2.xp-dev.com/svn/zayd-MediConnect
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2009-05-31T13:14:12.343750Z
+2009-05-31T13:14:27.500000Z
 d41d8cd98f00b204e9800998ecf8427e
 2009-05-29T17:59:57.205436Z
 4
